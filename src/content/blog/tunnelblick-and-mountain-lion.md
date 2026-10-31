@@ -1,6 +1,6 @@
 ---
 title: "Tunnelblick and OS X 10.8 Mountain Lion Issue KB"
-description: "A useful tips about Tunnelblick on Max OS X 10.8."
+description: "A useful tips about Tunnelblick on Mac OS X 10.8."
 pubDate: 2012-07-29
 tags: ["Software"]
 lang: en

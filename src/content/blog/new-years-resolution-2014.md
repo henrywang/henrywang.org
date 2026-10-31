@@ -6,10 +6,10 @@ tags: ["Life", "Books"]
 lang: en
 ---
 ## Reading ##
+
 I like reading so much, it's been a part of my life already. Some of the following books are recommended by [Lupin](http://twitter.com/pinlu). I've followed [his blog](http://taohuawu.net/) for a long time. It's a good book review site.
 
-*   [
-Lost Colony: The Untold Story of China's First Great Victory over the West](http://www.amazon.com/dp/B005N8U7A2/ref=wl_it_dp_o_pC_nS_ttl?_encoding=UTF8&colid=5X4J1EUO1Z9U&coliid=ITIKRFM5ZWUGA)
+*   [Lost Colony: The Untold Story of China's First Great Victory over the West](http://www.amazon.com/dp/B005N8U7A2/ref=wl_it_dp_o_pC_nS_ttl?_encoding=UTF8&colid=5X4J1EUO1Z9U&coliid=ITIKRFM5ZWUGA)
 *   [Chinas War With Japan 1937-1945](http://www.amazon.com/dp/1846140102/ref=wl_it_dp_o_pC_nS_ttl?_encoding=UTF8&colid=5X4J1EUO1Z9U&coliid=I2V34EKMOT6PJ3)
 *   [Jony Ive: The Genius Behind Apple's Greatest Products](http://www.amazon.com/Jony-Ive-Genius-Greatest-Products-ebook/dp/B00C5R71U8/ref=sr_1_1?s=digital-text&ie=UTF8&qid=1388490468&sr=1-1&keywords=john+ive)
 *   [Fear and Loathing in La Liga: Barcelona, Real Madrid, and the World's Greatest Sports Rivalry](http://www.amazon.com/dp/1568584504/ref=wl_it_dp_o_pC_nS_ttl?_encoding=UTF8&colid=5X4J1EUO1Z9U&coliid=I114M1QTW5SABF)
@@ -34,26 +34,29 @@ Lost Colony: The Untold Story of China's First Great Victory over the West](http
 *   [The Big Bang Theory - S7](http://www.imdb.com/title/tt0898266/?ref_=nv_sr_1) - TV Series
 *   [Agents of S.H.I.E.L.D. - S1](http://www.imdb.com/title/tt2364582/?ref_=nv_sr_1) - TV Series
 
-
 ## Listening ##
+
 Of course, it's podcast section! I'd like to share some my favorite podcasts with you. And I'll still follow these podcasts in 2014.
 
-*   [Accidential Tech Podcast](http://atp.fm) - Hosted by [Marco Arment](http://twitter.com/marcoarment), [Casey Liss](http://twitter.com/caseyliss), and [John Siracusa](http://twitter.com/siracusa)
+*   [Accidental Tech Podcast](http://atp.fm) - Hosted by [Marco Arment](http://twitter.com/marcoarment), [Casey Liss](http://twitter.com/caseyliss), and [John Siracusa](http://twitter.com/siracusa)
 *   [The Talk Show](http://www.muleradio.net/thetalkshow/65/) - Hosted by [John Gruber](http://twitter.com/gruber)
 *   [Debug](http://www.imore.com/debug) - Hosted by [Guy English](http://twitter.com/gte) and [Rene Ritchie](http://twitter.com/reneritchie)
 *   [Back to Work](http://5by5.tv/b2w) - Hosted by [Merlin Mann](http://twitter.com/hotdogsladies) and [Dan Benjamin](http://twitter.com/danbenjamin)
 
 ## Writing ##
+
 *   Keep my journal
 *   File my [blog](http://blog.henrywang.org) weekly
 *   Pay more attention on product review, such as iOS/Mac App, some of my favorite electronic equipments, etc.
 
 ## Traveling ##
-*   The first place I'd like to go to is Germany. BMW Musuem, Schloss Newschwanstein, Schloss Hohenschwangau, ALLIANZ ARENA, etc. 
+
+*   The first place I'd like to go to is Germany. BMW Museum, Schloss Neuschwanstein, Schloss Hohenschwangau, ALLIANZ ARENA, etc. 
 *   New Zealand again at autumn, enjoy its amazing view. This time I might just stay at Wanaka, a small peace town.
 *   Hong Kong and Macau. My wife's favorite place for shopping and gambling.
 
 ## Shopping ##
+
 *   <del>iPhone 5s for China Mobile - 4G LTE</del> **DONE (2014-01-17)**
 *   <del>[MacBook Pro 13-inch with Retina display](http://www.apple.com/macbook-pro/specs-retina/) - Replace my 2010 15-inch MacBook Pro</del> **DONE (2014-01-10)**
 *   4K Ultra HD LED Monitor (32-inch) - By Apple? DELL? SHARP? Too expensive now!

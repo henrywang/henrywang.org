@@ -43,7 +43,7 @@ lang: zh
       sudo aptitude install build-essential
       ```
 
-  5. 安装生成RSA Key所使用的openssl工具：（这里需要说明，strongSwan默认生成Key使用从/dev/radom产生的随机数，可能会碰到entrop不足的情况，这样产生随机数非常慢，慢到不可用）因此建议使用openssl生成RSA Key。
+  5. 安装生成RSA Key所使用的openssl工具：（这里需要说明，strongSwan默认生成Key使用从/dev/random产生的随机数，可能会碰到entropy不足的情况，这样产生随机数非常慢，慢到不可用）因此建议使用openssl生成RSA Key。
 
       ```sh
       sudo aptitude install libssl-dev
@@ -97,7 +97,7 @@ lang: zh
 
   12. 配置/etc/ipsec.conf文件
 
-      ```
+      ```text
       config setup
           plutostart=yes
           nat_traversal=yes
@@ -121,7 +121,7 @@ lang: zh
 
   13. 创建ipsec.secrets文件 /etc/ipsec.secrets，并编辑：
 
-      ```
+      ```text
       # /etc/ipsec.secrets - strongSwan IPsec secrets file
 
       # Server的Key文件
@@ -133,7 +133,7 @@ lang: zh
 
   14. 配置/etc/strongswan.conf文件，需要分配一个没有任何污染的DSN给VPN连接成功的iOS设备：
 
-      ```
+      ```text
       # /etc/strongswan.conf - strongSwan configuration file
 
       charon {
@@ -148,28 +148,28 @@ lang: zh
 
   15. 配置iOS设备：将生成的caCert.pem和clientCert.p12通过邮件的方式或者通过web方式下载到iOS设备上，并进行证书安装。
 
-      >选择 Settings 选择 General > Network > VPN > Add VPN Configuration选中IPSec VPNdescription用来标识你的vpn的，没有特别的限制Server一定要填入签发Server端证书时，输入的“CN=vpn.test.com”的=后的部分，即vpn.test.com。如果不一致，iOS设备会报错，Server验证失败。Account填入ipsec.secrets的用户名Password填入ipsec.secrects的密码切换Use Certificate到on，并选择导入和Clent的证书
+      >选择 Settings 选择 General > Network > VPN > Add VPN Configuration选中IPSec VPN description用来标识你的vpn的，没有特别的限制Server一定要填入签发Server端证书时，输入的“CN=vpn.test.com”的=后的部分，即vpn.test.com。如果不一致，iOS设备会报错，Server验证失败。Account填入ipsec.secrets的用户名Password填入ipsec.secrets的密码切换Use Certificate到on，并选择导入和Client的证书
 
-  16. VPN连接：在Settings > VPN下，将 VPN 切换到 ON 开始进行IPSec VPN的协商和连接。连接好后，会给出一个Notification“Welcome to strongSwan - the Linux VPN Soluution!”。看到该notificatio后，恭喜你，连接成功了！！
+  16. VPN连接：在Settings > VPN下，将 VPN 切换到 ON 开始进行IPSec VPN的协商和连接。连接好后，会给出一个Notification“Welcome to strongSwan - the Linux VPN Solution!”。看到该notification后，恭喜你，连接成功了！！
 
 BTW：我顺便说一下iptables的配置：
 
   1. strongSwan用到的端口就是UDP 500和4500，所以在iptables的filter表的INPUT 链要加入允许UDP 500和4500进入，即：
 
-      ```
+      ```text
       -A INPUT -p udp --dport 500 -j ACCEPT
       -A INPUT -p udp --dport 4500 -j ACCEPT
       ```
 
   2. 大家使用VPN的主要目的是为了访问大量的信息，所以需要配置NAT，具体配置如下：
 
-      ```
+      ```text
       -A POSTROUTING -s 10.0.0.0/24 -o eth0 -j MASQUERADE
       ```
 
   3. 需要配置filter表的Forward链：
 
-      ```
+      ```text
       -A FORWARD -s 10.0.0.0/24 -j ACCEPT
       ```
 

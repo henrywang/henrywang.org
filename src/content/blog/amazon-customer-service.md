@@ -23,7 +23,7 @@ Amazon的客户服务我归结为以下几点：一，高效率；二，一切�
 
 观点二：一切从客户的UX出发
 
-理由：Amazon的规定是电子书如果需要退货，需要在7天内提出。这里是[Amazone Kindle Return Policy](http://goo.gl/NfDGy)。我要求退货的时间距离购买日一个多月了，Amazon还是无条件的给我退了货。不管Amazon处于哪种考虑，但是结果就是无条件退货，没有一句废话。 
+理由：Amazon的规定是电子书如果需要退货，需要在7天内提出。这里是[Amazon Kindle Return Policy](http://goo.gl/NfDGy)。我要求退货的时间距离购买日一个多月了，Amazon还是无条件的给我退了货。不管Amazon处于哪种考虑，但是结果就是无条件退货，没有一句废话。 
 
 观点三：客户至上
 

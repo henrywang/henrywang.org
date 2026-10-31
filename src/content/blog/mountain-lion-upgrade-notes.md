@@ -1,6 +1,6 @@
 ---
 title: "Mountain Lion Upgrade Notes"
-description: "Becareful before upgrading to Mountain Lion"
+description: "Be careful before upgrading to Mountain Lion"
 pubDate: 2012-07-26
 tags: ["Apple"]
 lang: en

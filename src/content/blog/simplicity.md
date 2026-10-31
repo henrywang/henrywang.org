@@ -1,6 +1,6 @@
 ---
 title: "Simplicity"
-description: "A personal thoughs about washing machine"
+description: "A personal thoughts about washing machine"
 pubDate: 2012-12-07
 tags: ["Design"]
 lang: zh
@@ -26,7 +26,7 @@ lang: zh
 
 最后我要说一下神奇的小盒子。每个洗衣机上都有一个神奇的小盒子，里面有几个格子，分别需放入洗衣粉，洗衣液，和柔顺剂。填充的时候千万小心，别放错了，更别放多了，溢出到隔壁的格子里。更不能放少了，回头你的衣服会遭到应由的报应。绝对，技术工种。
 
-如上就是我的吐槽。大家觉得这样的洗衣机是给正常人用的吗？是不是使用洗衣机之前也要考取个认证啥的，弄个Washing Machine Operating Professional (WMOP)，Washing Mchine Operating Expert (WMOE)？我觉得这样不错，还能解决就业问题。    
+如上就是我的吐槽。大家觉得这样的洗衣机是给正常人用的吗？是不是使用洗衣机之前也要考取个认证啥的，弄个Washing Machine Operating Professional (WMOP)，Washing Machine Operating Expert (WMOE)？我觉得这样不错，还能解决就业问题。    
 
 该说说我认为我想要个什么样的洗衣机了。
 
