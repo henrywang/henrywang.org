@@ -2,7 +2,7 @@
 title: "Build factories, not features"
 description: "Two months after a layoff, Andrej Karpathy's talk on agentic engineering turned my panic into a question I can act on: how do I become an agentic engineer instead of a vibe coding one?"
 pubDate: 2026-06-30
-tags: ["Software", "Life"]
+tags: ["Life", "Software"]
 lang: en
 ---
 
