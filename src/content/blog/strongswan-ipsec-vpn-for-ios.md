@@ -15,7 +15,7 @@ lang: zh
 
   3. Cisco AnyConnect需要连接Cisco的Router，ASA或者PIX设备，Junos Pulse需要连接Juniper的SA系列VPN产品。这都需要花钱买，都很贵的，不考虑。
 
-  4. 有人会问了，openVPN也是一个选择啊。对，没错，但是iOS设备安装openVPN Client需要越狱。这点是我不能接受的。不考虑。
+  4. openVPN也是一个选择，但是iOS设备安装openVPN Client需要越狱。这点是我不能接受的。不考虑。
 
   5. 剩下唯一的解决方案就是找到一个软件，能够支持Cisco VPN Client。感谢google的强大，终于找到了一款opensource的软件strongSwan。strongSwan可以支持Cisco VPN Client，而且在其官方网页上居然给出了配置方法，很详细，详情请见[这里](http://wiki.strongswan.org/projects/strongswan/wiki/IOS_(Apple))。不得不说strongSwan为我们GFW内的人们做了一件大好事儿啊。
 

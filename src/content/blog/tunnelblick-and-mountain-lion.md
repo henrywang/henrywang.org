@@ -11,6 +11,6 @@ This’s from Tunnelblick official web:
 
 [http://code.google.com/p/tunnelblick/wiki/cMountainLionDnsIssue](http://code.google.com/p/tunnelblick/wiki/cMountainLionDnsIssue)
 
-I’ve encountered the same issue as above. This issue has been fixed by Tunnelblick already. In my case, just upgrade to Tunnelblick 3.3beta16 (build 3070) released 2012-07-27. That’s it. Easy!
+I’ve encountered the same issue as above. This issue has been fixed by Tunnelblick already. In my case, just upgrade to Tunnelblick 3.3beta16 (build 3070) released 2012-07-27.
 
 Thanks Tunnelblick!

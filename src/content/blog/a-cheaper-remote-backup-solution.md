@@ -11,12 +11,10 @@ I have a [Western Digital My Book World Edition II - 6 TB (2 x 3 TB) Network Att
 
 1. It’s a NAS. It appears on my home network as a shared folder. Easy to find, easy to use.
 2. It supports Apple Time Machine.
-3. It supports RAID0 & 1. To avoid one of two 3T disks failure. This’s very important because, as you know, all normal disks are not very stabile. My data is much more expensive than all disks!
+3. It supports RAID0 & 1. To avoid one of two 3T disks failure. This’s very important because all normal disks are not very stabile. My data is much more expensive than all disks!
 
 Even thought I have local backup, I’d rather make Glacier as my remote backup. I’ll put all my important data into Glacier. I can get all my the most important data back in case my local backup failed or some natural disaster.
 
 The Glacier is cheaper, only $0.01 per GB/month. For me, it costs less than $2/month.
 
 I’m going to put about 200GB data into Glacier, which includes the configuration files of 1Password, TextExpander, Alfred, my personal VPN, and Omnifocus. My iPhoto library, my documentation directory and my wife’s documentation directory will be uploaded there as well.
-
-So this’s my backup solution. Just share with you!

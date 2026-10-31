@@ -5,7 +5,7 @@ pubDate: 2012-05-18
 tags: ["Software"]
 lang: en
 ---
-I disabled the flash player for Safari when I was upgrading to Safari 5.1.7 two weeks ago. I hate flash player due to lots of well-known reasons.
+I disabled the flash player for Safari when I was upgrading to Safari 5.1.7 two weeks ago. I hate flash player.
 
 Today is my first running Longman Dictionary for Mac on my Mac since the Safari upgrade. Unfortunately Longman Dictionary didn’t run because it is a flashed application. I have to download and install a new version flash player (11.2.202.235). This version worked well with Safari, but Longman Dictionary disliked it. My favorite dictionary crashed. Luckily for me, Apple provides a detailed crash information for me. It indicates that this crash happens when it loads flash content. I suspect that my dictionary might not be compatible with new version flash player. Only one solution can fix this issue, uninstalling new installed flash player and re-installing old one.
 

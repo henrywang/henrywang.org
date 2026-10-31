@@ -16,7 +16,7 @@ The following step by step installation workflow has been optimized by me. It on
 * TextMate and Terminal theme backup. I use [IR_Black theme](http://toddwerth.com/category/blog/).
 * Write down iCloud login info
 * Make a Yosemite installation Disk
-* Download app installation package. Some of apps are not available in MAS, so their installation package, like .dmg, need to be downloaded directly from their web site, such as **Dropbox**, **TextExpander**, **Transporter client**, **TextMate**, **Google Chrome**, **ImageOptim**. The Dropbox needs VPN's help.
+* Download app installation package. Some of apps are not available in MAS, so their installation package, like .dmg, need to be downloaded directly from their web site, such as Dropbox, TextExpander, Transporter client, TextMate, Google Chrome, ImageOptim. The Dropbox needs VPN's help.
 
 ## After Installation
 
