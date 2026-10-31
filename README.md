@@ -10,16 +10,74 @@ pnpm dev        # http://localhost:4321
 pnpm build      # static output in dist/
 ```
 
-## Deploy on Cloudflare
+## Hosting and domain
 
-A Cloudflare Worker with static assets, connected to this GitHub repo (Workers Builds), builds and publishes every push to `main`. `wrangler.jsonc` serves `dist/` and uses `404.html` for missing pages. The Worker name in Cloudflare must match `name` in `wrangler.jsonc` (`henrywang-org`).
+Everything below is configured in the Cloudflare and Namecheap dashboards, not in this repo. It is recorded here so it can be checked or rebuilt later.
 
+### Cloudflare Worker (build and deploy)
+
+A Cloudflare Worker with static assets, connected to the GitHub repo `henrywang/henrywang.org` (Workers Builds), builds and publishes every push to `main`. There is no GitHub Actions workflow. `wrangler.jsonc` serves `dist/` and uses `404.html` for missing pages.
+
+Workers & Pages → `henrywang-org` → Settings → Build:
+
+- Worker name: `henrywang-org` (must match `name` in `wrangler.jsonc`, or the build fails)
 - Build command: `pnpm build`
 - Deploy command: `pnpm wrangler deploy`
-- Non-production branch deploy command: `pnpm wrangler versions upload`
+- Non-production branch deploy command: `pnpm wrangler versions upload` (other branches get a preview URL; the live site is untouched)
 - Production branch: `main`
+- Root path: `/`
+- Protect with Cloudflare Access: off (nothing private; drafts are excluded from every build)
 
-Custom domain: add `henrywang.org` under the project's Custom domains. Nothing else to configure — the site is fully static.
+Workers & Pages → `henrywang-org` → Settings → Domains & Routes → Custom domains:
+
+- `henrywang.org`
+- `www.henrywang.org` (redirected to the root, see below)
+
+### Domain registrar (Namecheap)
+
+`henrywang.org` is registered at Namecheap; DNS is hosted by Cloudflare.
+
+- Domain List → Manage → Nameservers: **Custom DNS**
+  - `micah.ns.cloudflare.com`
+  - `zara.ns.cloudflare.com`
+- DNSSEC at Namecheap: off. Turn it on from Cloudflare (DNS → Settings → DNSSEC), which then shows the DS record to enter at Namecheap.
+- Namecheap's own DNS, URL redirects and email forwarding no longer apply, since Namecheap does not serve DNS for the domain.
+
+### Cloudflare domain (`henrywang.org` zone)
+
+Added via Account Home → Onboard a domain → Connect a domain, Free plan.
+
+DNS → Records:
+
+| Type | Name | Content | Notes |
+|---|---|---|---|
+| Worker | `henrywang.org` | `henrywang-org` | Created by the Worker custom domain |
+| Worker | `www` | `henrywang-org` | Created by the Worker custom domain |
+| TXT | `@` | `v=spf1 -all` | No server may send mail for the domain |
+| TXT | `_dmarc` | `v=DMARC1; p=reject; sp=reject; adkim=s; aspf=s;` | Receivers reject mail claiming to be from the domain |
+
+There are no MX records: the domain does not send or receive email. If email is ever set up (e.g. Cloudflare Email Routing), replace the SPF record and relax the DMARC policy to match.
+
+SSL/TLS → Edge Certificates:
+
+- Always Use HTTPS: on (`http://` → `https://`, 301)
+- Certificate: issued and renewed automatically by Cloudflare
+
+Rules → Redirect Rules (created from the "Redirect from WWW to root" template):
+
+- Match: wildcard `https://www.*`
+- Target: `https://${1}`, status 301, preserve query string
+- The dashboard warns that `www` may not be proxied, because the Worker custom-domain record is not a normal DNS record. It is proxied; deploy the rule anyway.
+
+### Checks
+
+```sh
+dig +short NS henrywang.org                  # micah/zara.ns.cloudflare.com
+dig +short TXT henrywang.org                 # "v=spf1 -all"
+dig +short TXT _dmarc.henrywang.org          # "v=DMARC1; p=reject; ..."
+curl -sI http://henrywang.org/      | grep -i location   # https://henrywang.org/
+curl -sI https://www.henrywang.org/ | grep -i location   # https://henrywang.org/
+```
 
 ## Writing a post
 
