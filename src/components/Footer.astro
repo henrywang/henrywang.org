@@ -23,7 +23,10 @@ const year = new Date().getFullYear();
         {SITE.links.map((l) => <a href={l.href} rel="me noopener">{l.label === 'Apps' ? 'Berthly' : l.label}</a>)}
       </div>
     </div>
-    <div class="legal"><span>© {year} {SITE.author}</span><span>{s.noTrack}</span></div>
+    <div class="legal">
+      <span>© {year} {SITE.author} · {s.postsLicense} <a href={SITE.contentLicense} rel="license noopener">CC BY 4.0</a> · <a href={SITE.repo} rel="noopener">{s.source}</a></span>
+      <span>{s.noTrack}</span>
+    </div>
   </footer>
 </div>
 <style>
@@ -41,4 +44,6 @@ const year = new Date().getFullYear();
   .col a { font-size: 14px; color: var(--body); padding: 3px 0; }
   .col a:hover { color: var(--accent); }
   .legal { margin-top: 26px; padding-top: 16px; border-top: 1px solid var(--border); font-size: 12.5px; color: var(--muted); display: flex; flex-wrap: wrap; gap: 8px; justify-content: space-between; }
+  .legal a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+  .legal a:hover { color: var(--accent); }
 </style>

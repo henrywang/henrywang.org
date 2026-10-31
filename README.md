@@ -125,3 +125,9 @@ Dark mode follows the system setting by default; the nav button flips Light ↔ 
 
 1. Replace `bio` in `src/consts.ts`.
 2. Your photo is `public/images/henry.jpg` (home intro, post byline, About card). Replace it with a larger one any time — same filename. About copy lives in `src/views/About.astro`.
+
+## License
+
+- Code: [MIT](LICENSE)
+- Posts in `src/content/blog/` and images in `public/images/blog/`: [CC BY 4.0](LICENSE-CONTENT)
+- `public/images/henry.jpg`: all rights reserved

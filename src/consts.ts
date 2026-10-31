@@ -6,6 +6,8 @@ export const SITE = {
     zh: '关于软件、设计、Mac、Linux、旅行和读书的笔记。',
   },
   x: 'henrywangxf',
+  repo: 'https://github.com/henrywang/henrywang.org',
+  contentLicense: 'https://creativecommons.org/licenses/by/4.0/',
   postsOnHome: 10,
   links: [
     { label: 'GitHub', handle: '@henrywang', href: 'https://github.com/henrywang' },
