@@ -1,0 +1,44 @@
+---
+import { SITE } from '../consts';
+import { type Lang, t, path } from '../i18n';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const s = t(lang);
+const year = new Date().getFullYear();
+---
+<div class="foot">
+  <svg viewBox="0 0 1200 26" preserveAspectRatio="none" class="wave" aria-hidden="true"><path d="M0 14 Q150 4 300 14 T600 14 T900 14 T1200 14 V26 H0 Z" class="fill"></path><path d="M0 14 Q150 4 300 14 T600 14 T900 14 T1200 14" class="line" stroke-width="2" fill="none"></path></svg>
+  <footer>
+    <div class="cols">
+      <div class="about">
+        <div class="brand"><span class="mark">H</span><b>{SITE.title}</b></div>
+        <p>{s.blurb}</p>
+      </div>
+      <div class="col">
+        <h4 class="eyebrow">{s.writing}</h4>
+        <a href={path(lang, '/')}>{s.latest}</a><a href={path(lang, '/archive/')}>{s.archive}</a><a href={path(lang, '/rss.xml')}>RSS</a>
+      </div>
+      <div class="col">
+        <h4 class="eyebrow">{s.elsewhere}</h4>
+        {SITE.links.map((l) => <a href={l.href} rel="me noopener">{l.label === 'Apps' ? 'Berthly' : l.label}</a>)}
+      </div>
+    </div>
+    <div class="legal"><span>© {year} {SITE.author}</span><span>{s.noTrack}</span></div>
+  </footer>
+</div>
+<style>
+  .wave { display: block; width: 100%; height: 26px; }
+  .fill { fill: var(--tint); } .line { stroke: var(--accent-soft); }
+  footer { background: var(--tint); padding: 28px var(--gutter) 34px; }
+  .cols { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 32px 48px; }
+  .about { flex: 1 1 220px; }
+  .about p { margin: 8px 0 0; font-size: 13px; line-height: 1.7; color: var(--muted); max-width: 34ch; }
+  .brand { display: flex; align-items: center; gap: 9px; }
+  .brand b { font-size: 15px; font-weight: 700; }
+  .mark { width: 22px; height: 22px; border-radius: 6px; background: #C15F3C; display: flex; align-items: center; justify-content: center; color: #FAF9F5; font-family: var(--serif); font-weight: 500; font-size: 14px; line-height: 1; }
+  .col { flex: 1 1 120px; display: flex; flex-direction: column; }
+  .col h4 { margin: 0 0 10px; }
+  .col a { font-size: 14px; color: var(--body); padding: 3px 0; }
+  .col a:hover { color: var(--accent); }
+  .legal { margin-top: 26px; padding-top: 16px; border-top: 1px solid var(--border); font-size: 12.5px; color: var(--muted); display: flex; flex-wrap: wrap; gap: 8px; justify-content: space-between; }
+</style>

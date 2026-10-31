@@ -1,0 +1,17 @@
+---
+import { getTags } from '../utils';
+import { type Lang, t, tagLabel, path } from '../i18n';
+interface Props { lang: Lang; active?: string }
+const { lang, active } = Astro.props;
+const tags = await getTags();
+---
+<div class="filter">
+  <a href={path(lang, '/')} class:list={['chip', { on: !active }]}>{t(lang).all}</a>
+  {tags.map((x) => <a href={path(lang, '/tags/' + x.slug + '/')} class:list={['chip', { on: active === x.slug }]}>{tagLabel(x.tag, lang)}</a>)}
+</div>
+<style>
+  .filter { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+  .chip { font-size: 13px; font-weight: 600; border-radius: 999px; padding: 6px 14px; border: 1px solid var(--border-strong); color: var(--muted); background: transparent; }
+  .chip:hover { color: var(--accent); border-color: var(--accent); }
+  .chip.on, .chip.on:hover { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+</style>

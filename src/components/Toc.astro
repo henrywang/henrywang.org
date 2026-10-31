@@ -1,0 +1,27 @@
+---
+interface Props { headings: { depth: number; slug: string; text: string }[]; label: string }
+const { headings, label } = Astro.props;
+---
+<aside class="toc" aria-label={label}>
+  <span class="eyebrow">{label}</span>
+  <nav>{headings.map((h) => <a href={'#' + h.slug} data-slug={h.slug}>{h.text}</a>)}</nav>
+</aside>
+<style>
+  .toc { position: sticky; top: 88px; display: flex; flex-direction: column; }
+  .eyebrow { margin-bottom: 10px; }
+  nav { display: flex; flex-direction: column; gap: 2px; }
+  a { font-size: 13.5px; line-height: 1.4; padding: 5px 0 5px 12px; border-left: 2px solid var(--border-soft); color: var(--muted); font-weight: 500; transition: color .15s, border-color .15s; }
+  a:hover { color: var(--accent); }
+  a[aria-current] { color: var(--accent); border-color: var(--accent); font-weight: 600; }
+</style>
+<script>
+  const links = [...document.querySelectorAll<HTMLAnchorElement>('.toc a')];
+  const heads = links.map((a) => document.getElementById(a.dataset.slug!)).filter(Boolean) as HTMLElement[];
+  const setActive = () => {
+    let cur = heads[0];
+    for (const h of heads) if (h.getBoundingClientRect().top <= 130) cur = h;
+    links.forEach((a) => a.toggleAttribute('aria-current', a.dataset.slug === cur?.id));
+  };
+  addEventListener('scroll', setActive, { passive: true });
+  setActive();
+</script>

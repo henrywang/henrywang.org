@@ -1,0 +1,10 @@
+---
+import { tagColors, slugifyTag } from '../utils';
+import { type Lang, tagLabel, path } from '../i18n';
+interface Props { tag: string; lang: Lang; link?: boolean }
+const { tag, lang, link = true } = Astro.props;
+const { bg, fg } = tagColors(tag);
+const style = '--tag-bg:' + bg + ';--tag-fg:' + fg;
+const label = tagLabel(tag, lang);
+---
+{link ? <a href={path(lang, '/tags/' + slugifyTag(tag) + '/')} class="tag" style={style}>{label}</a> : <span class="tag" style={style}>{label}</span>}

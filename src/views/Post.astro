@@ -1,0 +1,99 @@
+---
+import { render } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import TagChip from '../components/TagChip.astro';
+import Toc from '../components/Toc.astro';
+import { formatDate, readingTime, postUrl, htmlLang, type Post } from '../utils';
+import { SITE } from '../consts';
+
+interface Props { post: Post; newer?: Post; older?: Post; translation?: Post }
+const { post, newer, older, translation } = Astro.props;
+const { Content, headings } = await render(post);
+const toc = headings.filter((h) => h.depth === 2 && h.slug !== 'footnote-label');
+const { title, description, pubDate, updatedDate, tags, heroImage, lang } = post.data;
+const hl = htmlLang(lang);
+const tocLabel = lang === 'zh' ? '本页目录' : 'On this page';
+---
+<Base lang="en" title={title} description={description} image={heroImage} type="article">
+  <div class="progress" id="progress" aria-hidden="true"></div>
+  <article class="post">
+    <header>
+      <a href="/" class="back">← Writing</a>
+      <div class="meta">
+        {tags.map((x) => <TagChip tag={x} lang="en" />)}
+        <span>{formatDate(pubDate)} · {readingTime(post.body, lang)} min read</span>
+      </div>
+      <h1 lang={hl}>{title}</h1>
+      <p class="summary" lang={hl}>{description}</p>
+      {translation && (
+        <a href={postUrl(translation)} class="alt" hreflang={htmlLang(translation.data.lang)}>
+          <span class="badge">{translation.data.lang === 'zh' ? '中文' : 'EN'}</span>
+          <span class="alt-text">{translation.data.lang === 'zh' ? 'Also available in Chinese' : 'Also available in English'}</span>
+          <span class="arrow">→</span>
+        </a>
+      )}
+      <div class="byline">
+        <img src="/images/henry.jpg" alt="" class="avatar" width="32" height="32" />
+        <span class="name">{SITE.author}</span>
+        {updatedDate && <span class="updated">· Updated {formatDate(updatedDate)}</span>}
+      </div>
+      {heroImage && <img src={heroImage} alt="" class="hero" />}
+    </header>
+
+    <div class:list={['layout', { 'has-toc': toc.length > 1 }]}>
+      {toc.length > 1 && <Toc headings={toc} label={tocLabel} />}
+      <div class="body">
+        <div class="prose" lang={hl}><Content /></div>
+        <nav class="pager">
+          {newer && <a href={postUrl(newer)} class="card"><span class="eyebrow">← Newer</span><span class="ptitle" lang={htmlLang(newer.data.lang)}>{newer.data.title}</span></a>}
+          {older && <a href={postUrl(older)} class="card older"><span class="eyebrow">Older →</span><span class="ptitle" lang={htmlLang(older.data.lang)}>{older.data.title}</span></a>}
+        </nav>
+      </div>
+    </div>
+  </article>
+</Base>
+<style>
+  .progress { position: fixed; top: 0; left: 0; height: 3px; width: 0; z-index: 50; background: linear-gradient(90deg, #D97757, #C6613F); transition: width .12s linear; }
+  .post { padding: 48px var(--gutter) 80px; }
+  header { max-width: var(--measure); margin: 0 auto 44px; }
+  .back { display: inline-block; font-size: 14px; font-weight: 600; margin-bottom: 28px; }
+  .meta { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; font-size: 13.5px; color: var(--muted); margin-bottom: 16px; }
+  h1 { margin: 0 0 18px; font-family: var(--serif); font-size: clamp(34px, 4.6vw, 50px); font-weight: 500; letter-spacing: -.015em; line-height: 1.1; text-wrap: pretty; }
+  .summary { margin: 0 0 26px; font-size: 20px; line-height: 1.5; color: var(--muted); text-wrap: pretty; }
+  h1:lang(zh) { font-family: var(--zh); font-size: clamp(28px, 3.8vw, 38px); font-weight: 600; letter-spacing: .01em; line-height: 1.4; }
+  .summary:lang(zh) { font-size: 18px; line-height: 1.8; }
+  .alt { display: flex; align-items: center; gap: 10px; margin: 0 0 22px; padding: 10px 14px; border-radius: 10px; border: 1px solid var(--border); background: var(--tint); font-size: 14px; color: var(--body); }
+  .alt:hover { border-color: var(--border-strong); color: var(--body); }
+  .badge { font-size: 12px; font-weight: 700; color: var(--accent); }
+  .alt-text { flex: 1; }
+  .arrow { color: var(--accent); font-weight: 600; }
+  .byline { display: flex; align-items: center; gap: 10px; padding-top: 22px; border-top: 1px solid var(--border-soft); font-size: 14px; }
+  .avatar { width: 32px; height: 32px; }
+  .name { font-weight: 600; }
+  .updated { color: var(--muted); }
+  .hero { display: block; width: 100%; margin-top: 32px; border-radius: 14px; border: 1px solid var(--border); }
+  .layout { display: grid; grid-template-columns: minmax(0, var(--measure)); justify-content: center; gap: 56px; align-items: start; }
+  .layout :global(.toc) { display: none; }
+  @media (min-width: 1080px) {
+    .layout.has-toc { grid-template-columns: 200px minmax(0, var(--measure)); }
+    .layout :global(.toc) { display: flex; }
+  }
+  .body { min-width: 0; }
+  .pager { margin-top: 48px; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+  .pager .card { padding: 16px 18px; border-radius: 12px; }
+  .pager .older { text-align: right; }
+  .pager .eyebrow { display: block; margin-bottom: 6px; }
+  .ptitle { display: block; font-family: var(--serif); font-size: 17px; font-weight: 500; line-height: 1.4; color: var(--text); text-wrap: pretty; }
+  .ptitle:lang(zh) { font-family: var(--zh); }
+</style>
+<script>
+  const bar = document.getElementById('progress')!;
+  const update = () => {
+    const el = document.documentElement;
+    const max = el.scrollHeight - el.clientHeight;
+    bar.style.width = (max > 0 ? Math.min(100, (el.scrollTop / max) * 100) : 0) + '%';
+  };
+  addEventListener('scroll', update, { passive: true });
+  addEventListener('resize', update);
+  update();
+</script>

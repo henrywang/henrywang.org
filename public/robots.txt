@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://henrywang.org/sitemap-index.xml

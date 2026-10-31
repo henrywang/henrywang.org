@@ -1,0 +1,12 @@
+---
+import Base from '../layouts/Base.astro';
+import { t } from '../i18n';
+const en = t('en'), zh = t('zh');
+---
+<Base lang="en" title="Not found">
+  <div class="container">
+    <h1 class="page-title">{en.notFound}</h1>
+    <p class="lede">{en.notFoundBody} <a href="/">{en.backHome}</a></p>
+    <p class="lede" lang="zh-CN">{zh.notFoundBody} <a href="/">{zh.backHome}</a></p>
+  </div>
+</Base>

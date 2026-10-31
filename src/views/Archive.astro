@@ -1,0 +1,45 @@
+---
+import Base from '../layouts/Base.astro';
+import TagChip from '../components/TagChip.astro';
+import TagFilter from '../components/TagFilter.astro';
+import { getPosts, postUrl, htmlLang } from '../utils';
+import { type Lang, t } from '../i18n';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const s = t(lang);
+const posts = await getPosts();
+const years = [...new Set(posts.map((p) => p.data.pubDate.getUTCFullYear()))];
+---
+<Base lang={lang} title={s.archive}>
+  <div class="container">
+    <h1 class="page-title">{s.archive}</h1>
+    <p class="lede">{s.archiveLede(posts.length)}</p>
+    <div class="filter"><TagFilter lang={lang} /></div>
+    {years.map((year) => (
+      <section class="year">
+        <h2 class="eyebrow">{year}</h2>
+        <div class="items">
+          {posts.filter((p) => p.data.pubDate.getUTCFullYear() === year).map((p) => (
+            <a href={postUrl(p)} class="item">
+              <span class="text"><span class="title" lang={htmlLang(p.data.lang)}>{p.data.title}</span><span class="desc">{p.data.description}</span></span>
+              {p.data.tags[0] && <TagChip tag={p.data.tags[0]} lang={lang} link={false} />}
+            </a>
+          ))}
+        </div>
+      </section>
+    ))}
+  </div>
+</Base>
+<style>
+  .filter { margin-bottom: 24px; }
+  .year { display: grid; grid-template-columns: minmax(64px, 120px) minmax(0, 1fr); gap: 0 24px; padding: 8px 0 28px; }
+  .year h2 { margin: 0; padding-top: 12px; }
+  .items { display: flex; flex-direction: column; }
+  .item { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 16px; align-items: baseline; padding: 12px 0; border-bottom: 1px solid var(--border-soft); color: inherit; }
+  .text { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+  .title { font-family: var(--serif); font-size: 18px; font-weight: 500; line-height: 1.4; text-wrap: pretty; transition: color .15s; }
+  .title:lang(zh) { font-family: var(--zh); font-weight: 600; }
+  .item:hover .title { color: var(--accent); }
+  .desc { font-size: 13px; color: var(--muted); display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; }
+  @media (max-width: 560px) { .year { grid-template-columns: 1fr; } .year h2 { padding: 0 0 6px; } }
+</style>

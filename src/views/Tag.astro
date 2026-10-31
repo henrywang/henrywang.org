@@ -1,0 +1,23 @@
+---
+import Base from '../layouts/Base.astro';
+import TagFilter from '../components/TagFilter.astro';
+import PostRow from '../components/PostRow.astro';
+import { getPosts, getTranslation, slugifyTag } from '../utils';
+import { type Lang, t, tagLabel, path } from '../i18n';
+interface Props { tag: string }
+const { tag } = Astro.props;
+const lang: Lang = 'en';
+const slug = slugifyTag(tag);
+const posts = (await getPosts()).filter((p) => p.data.tags.some((x) => slugifyTag(x) === slug));
+const rows = await Promise.all(posts.map(async (post) => ({ post, hasTranslation: !!(await getTranslation(post)) })));
+const label = tagLabel(tag, lang);
+---
+<Base lang={lang} title={label}>
+  <div class="container">
+    <h1 class="page-title">{label}</h1>
+    <p class="lede">{t(lang).tagLede(posts.length)}</p>
+    <TagFilter lang={lang} active={slug} />
+    <div class="list">{rows.map((r) => <PostRow post={r.post} hasTranslation={r.hasTranslation} />)}</div>
+  </div>
+</Base>
+<style>.list { display: flex; flex-direction: column; }</style>

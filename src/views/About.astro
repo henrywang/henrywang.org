@@ -1,0 +1,43 @@
+---
+import Base from '../layouts/Base.astro';
+import { SITE } from '../consts';
+import { type Lang, t, path } from '../i18n';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const s = t(lang);
+const rss = path(lang, '/rss.xml');
+---
+<Base lang={lang} title={s.about}>
+  <div class="about">
+    <div class="hero">
+      <div class="hero-top">
+        <span class="site">henrywang.org</span>
+        <img src="/images/henry.jpg" alt="Henry Wang" width="400" height="400" />
+      </div>
+      <p class="hero-line">Notes on software, Apple, Linux, and slow trains.</p>
+    </div>
+    <h1 class="page-title">{s.about}</h1>
+    <div class="prose">
+      <p>I'm Henry Wang, a macOS and iOS developer and a long-time Linux user. I've been on the Mac for 16 years. I make apps under <a href="https://berthly.net">Berthly</a>.</p>
+      <p>By day I'm a Quality Engineer at LSEG. Before that I was a Quality Engineer at Red Hat, and I still maintain <a href="https://github.com/bootc-dev/bootc">bootc</a>, which builds and updates bootable Linux systems from container images. I've used Linux for 10 years.</p>
+      <p>This site has no analytics, no cookies, and no newsletter pop-up. If you want to follow along, the <a href={rss}>RSS feed</a> is the whole subscription model.</p>
+      <h2>{s.elsewhere}</h2>
+    </div>
+    <div class="links">
+      {SITE.links.map((l) => <a href={l.href} class="card" rel="me noopener"><span class="eyebrow">{l.label}</span><span class="handle">{l.handle}</span></a>)}
+    </div>
+  </div>
+</Base>
+<style>
+  .about { max-width: var(--measure); margin: 0 auto; padding: 64px var(--gutter) 80px; }
+  .hero { container-type: inline-size; aspect-ratio: 16/9; border-radius: 8px; background: #D97757; color: #141413; padding: 6cqw; margin-bottom: 40px; display: flex; flex-direction: column; justify-content: space-between; }
+  .hero-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 4cqw; }
+  .site { font-size: max(12px, 1.9cqw); font-weight: 500; letter-spacing: .04em; }
+  .hero img { width: max(64px, 18cqw); height: auto; aspect-ratio: 1; border-radius: 50%; object-fit: cover; object-position: 50% 35%; display: block; }
+  .hero-line { margin: 0; font-family: var(--serif); font-size: 6.4cqw; font-weight: 400; line-height: 1.12; letter-spacing: -.015em; max-width: 16ch; text-wrap: balance; }
+  .page-title { margin-bottom: 20px; }
+  .prose { font-family: var(--font); font-size: 17px; }
+  .links { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; }
+  .eyebrow { display: block; margin-bottom: 4px; }
+  .handle { font-size: 15px; font-weight: 600; }
+</style>
