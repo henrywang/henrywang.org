@@ -1,0 +1,20 @@
+#!/bin/sh
+# Every push to main is published to henrywang.org by Cloudflare, so main only gets commits that pass `pnpm check`.
+# Enable once per clone: git config core.hooksPath .githooks
+# Bypass in an emergency: git push --no-verify
+
+zero=0000000000000000000000000000000000000000
+pushes_main=false
+while read -r local_ref local_sha remote_ref remote_sha; do
+  [ "$remote_ref" = "refs/heads/main" ] || continue
+  [ "$local_sha" = "$zero" ] && continue
+  pushes_main=true
+done
+
+[ "$pushes_main" = true ] || exit 0
+
+echo "pre-push: running pnpm check before pushing to main"
+if ! pnpm check; then
+  echo "pre-push: pnpm check failed, push to main aborted" >&2
+  exit 1
+fi

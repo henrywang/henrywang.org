@@ -8,7 +8,10 @@ Personal blog built with [Astro](https://astro.build), deployed to Cloudflare. P
 pnpm install
 pnpm dev        # http://localhost:4321
 pnpm build      # static output in dist/
+pnpm check      # spelling, Markdown lint, type check and build; run before pushing to main
 ```
+
+Instructions for coding agents are in `AGENTS.md`.
 
 ## Hosting and domain
 
