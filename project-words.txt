@@ -16,11 +16,13 @@ Coinverter
 colour
 colours
 defaultroute
+devcage
 dmarc
 DMARC
 DNSSEC
 dport
 Evernote
+exfiltration
 fanless
 fontsource
 frontmatter
@@ -75,6 +77,7 @@ ptitle
 Pythonista
 Qwen
 Reeder
+rescan
 rightcert
 rightsourceip
 rightsubnet
@@ -108,3 +111,4 @@ WMOP
 xauth
 XAUTH
 xauthrsasig
+YARA
