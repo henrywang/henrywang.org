@@ -93,6 +93,7 @@ Soulver
 Spector
 strongswan
 Strongswan
+swiftlint
 sysconfdir
 tmutil
 Topher
@@ -108,6 +109,7 @@ WCDMA
 wght
 WMOE
 WMOP
+worktrees
 xauth
 XAUTH
 xauthrsasig
